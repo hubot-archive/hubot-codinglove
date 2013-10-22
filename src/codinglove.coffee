@@ -4,6 +4,7 @@
 #
 # Dependencies:
 #   "cheerio": "0.7.0"
+#   "ent": "0.1.0"
 #
 # Configuration:
 #   None
@@ -19,6 +20,7 @@
 #   Based 9gag.coffee by EnriqueVidal 
 
 cheerio = require('cheerio')
+ent = require('ent')
 
 module.exports = (robot)->
   robot.respond /(donne moi de la )?joie( bordel)?/i, (message)->
@@ -57,4 +59,4 @@ get_meme_image = (body, selector)->
 
 get_meme_txt = (body, selector)->
   $ = cheerio.load(body)
-  $(selector).first().text()
+  ent.decode $(selector).first().text()

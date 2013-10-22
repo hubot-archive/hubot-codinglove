@@ -21,4 +21,5 @@ Returns the comment and the gif in all cases.
 ## Dependencies
 
 * [cheerio](https://github.com/MatthewMueller/cheerio)
+* [ent](https://github.com/substack/node-ent)
 
