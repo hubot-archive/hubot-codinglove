@@ -1,0 +1,39 @@
+{
+  "name": "hubot-codinglove",
+  "description": "A script for Hubot to display meme from thecodinglove and lesjoiesducode.",
+  "version": "1.0.0",
+  "author": "Yves Brissaud <yves.brissaud@gmail.com",
+  "license": "MIT",
+
+  "keywords": [
+    "hubot",
+    "hubot-scripts"
+  ],
+
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/eunomie/hubot-codinglove.git"
+  },
+
+  "bugs": {
+    "url": "https://github.com/eunomie/hubot-codinglove/issues"
+  },
+
+  "dependencies": {
+    "coffee-script": "~1.6",
+    "cheerio": "0.7.0"
+  },
+
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "sinon-chai": "*",
+    "sinon": "*"
+  },
+
+  "main": "index.coffee",
+
+  "scripts": {
+    "test": "script/test"
+  }
+}
