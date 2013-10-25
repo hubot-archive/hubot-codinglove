@@ -2,7 +2,7 @@
 
 A little script to get meme from [the coding love](http://thecodinglove.com/) and [les joies du code](http://loesjoiesducode.tumblr.com), both the last and a random one.
 
-[![Build Status](https://travis-ci.org/eunomie/hubot-codinglove.png)](https://travis-ci.org/eunomie/hubot-codinglove)
+[![Build Status](https://travis-ci.org/eunomie/hubot-codinglove.png)](https://travis-ci.org/eunomie/hubot-codinglove) [![NPM version](https://badge.fury.io/js/hubot-codinglove.png)](http://badge.fury.io/js/hubot-codinglove)
 
 ## Usage
 
