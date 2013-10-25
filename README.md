@@ -23,3 +23,18 @@ Returns the comment and the gif in all cases.
 * [cheerio](https://github.com/MatthewMueller/cheerio)
 * [ent](https://github.com/substack/node-ent)
 
+## Installation
+
+Add the package `hubot-codinglove` as a dependency in your Hubot `package.json` file.
+
+    "dependencies": {
+      "hubot-codinglove": "0.1.0"
+    }
+
+Run the following command to make sure the module is installed.
+
+    $ npm install hubot-codinglove
+
+To enable the script, add the `hubot-codinglove` entry to the `external-scripts.json` file (you may need to create this file).
+
+    ["hubot-codinglove"]
