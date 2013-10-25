@@ -1,7 +1,7 @@
 {
   "name": "hubot-codinglove",
   "description": "A script for Hubot to display meme from thecodinglove and lesjoiesducode.",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "author": "Yves Brissaud <yves.brissaud@gmail.com",
   "license": "MIT",
 
