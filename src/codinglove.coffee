@@ -17,17 +17,17 @@
 #
 # Author:
 #   Eunomie
-#   Based 9gag.coffee by EnriqueVidal 
+#   Based 9gag.coffee by EnriqueVidal
 
 cheerio = require('cheerio')
 ent = require('ent')
 
 module.exports = (robot)->
   robot.respond /(donne moi de la )?joie( bordel)?/i, (message)->
-    send_meme message, 'http://lesjoiesducode.tumblr.com/random', (text)->
+    send_meme message, 'http://lesjoiesducode.fr/random', (text)->
       message.send text
   robot.respond /derni[èe]re joie/i, (message)->
-    send_meme message, 'http://lesjoiesducode.tumblr.com', (text)->
+    send_meme message, 'http://lesjoiesducode.fr', (text)->
       message.send text
   robot.respond /(give me some )?joy( asshole)?/i, (message)->
     send_meme message, 'http://thecodinglove.com/random', (text)->
@@ -35,7 +35,7 @@ module.exports = (robot)->
   robot.respond /last joy/i, (message)->
     send_meme message, 'http://thecodinglove.com', (text)->
       message.send text
-  
+
 
 send_meme = (message, location, response_handler)->
   url = location
