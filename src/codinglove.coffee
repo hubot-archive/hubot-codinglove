@@ -43,7 +43,7 @@ send_meme = (message, location, response_handler)->
   message.http(url).get() (error, response, body)->
     return response_handler "Sorry, something went wrong" if error
 
-    if response.statusCode == 302
+    if response.statusCode == 302 || response.statusCode == 301
       location = response.headers['location']
       return send_meme(message, location, response_handler)
 
