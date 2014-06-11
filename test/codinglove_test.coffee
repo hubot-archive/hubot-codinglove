@@ -11,14 +11,8 @@ describe 'codinglove', ->
 
     require('../src/codinglove')(@robot)
 
-  it 'registers a respond listener to last meme from thecodinglove', ->
-    expect(@robot.respond).to.have.been.calledWith(/last joy/)
-
-  it 'registers a respond listener to random meme from thecodinglove', ->
-    expect(@robot.respond).to.have.been.calledWith(/(give me some )?joy( asshole)?/)
-
-  it 'registers a respond listener to last meme from lesjoiesducode', ->
-    expect(@robot.respond).to.have.been.calledWith(/derni[eè]re joie/)
-
-  it 'registers a respond listener to random meme from lesjoiesducode', ->
-    expect(@robot.respond).to.have.been.calledWith(/(donne moi de la )?joie( bordel)?/)
+  it 'registers respond listeners', ->
+    expect(@robot.respond.args[0][0].toString()).to.equal("/(donne moi de la )?joie( bordel)?/i")
+    expect(@robot.respond.args[1][0].toString()).to.equal("/derni[èe]re joie/i")
+    expect(@robot.respond.args[2][0].toString()).to.equal("/(give me some )?joy( asshole)?/i")
+    expect(@robot.respond.args[3][0].toString()).to.equal("/last joy/i")
