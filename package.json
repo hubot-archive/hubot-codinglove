@@ -12,11 +12,11 @@
 
   "repository": {
     "type": "git",
-    "url": "git://github.com/eunomie/hubot-codinglove.git"
+    "url": "https://github.com/hubot-scripts/hubot-codinglove.git"
   },
 
   "bugs": {
-    "url": "https://github.com/eunomie/hubot-codinglove/issues"
+    "url": "https://github.com/hubot-scripts/hubot-codinglove/issues"
   },
 
   "dependencies": {
