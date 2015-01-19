@@ -11,7 +11,9 @@ Returns the comment and the gif in all cases.
 ### The coding love
 
 * `robot [give me some] joy [asshole]`: return a random
+* `robot [spread some] love`: return a random
 * `robot last joy`: return the last one
+* `robot last love`: return the last one
 
 ### Les joies du code [fr]
 
