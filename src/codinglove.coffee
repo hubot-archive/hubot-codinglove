@@ -31,16 +31,10 @@ module.exports = (robot)->
   robot.respond /derni[èe]re joie/i, (message)->
     send_meme message, 'http://lesjoiesducode.fr', (text)->
       message.send text
-  robot.respond /(give me some )?joy( asshole)?/i, (message)->
+  robot.respond /((give me|spread) some )?(joy|love)( asshole)?/i, (message)->
     send_meme message, 'http://thecodinglove.com/random', (text)->
       message.send text
-  robot.respond /last joy/i, (message)->
-    send_meme message, 'http://thecodinglove.com', (text)->
-      message.send text
-  robot.respond /(spread some )?love/i, (message)->
-    send_meme message, 'http://thecodinglove.com/random', (text)->
-      message.send text
-  robot.respond /last love/i, (message)->
+  robot.respond /last (joy|love)/i, (message)->
     send_meme message, 'http://thecodinglove.com', (text)->
       message.send text
 
