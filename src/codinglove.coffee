@@ -12,6 +12,8 @@
 # Commands:
 #   hubot [give me some] joy [asshole] - Return a random meme (coding love)
 #   hubot last joy - Returns last meme (coding love)
+#   hubot [spread some] love - Return a random meme (coding love)
+#   hubot last love - Returns last meme (coding love)
 #   hubot [donne moi de la] joie [bordel] - Returns a random meme (text and image)
 #   hubot {dernière|derniere} joie - Returns last meme (text and image).
 #
@@ -33,6 +35,12 @@ module.exports = (robot)->
     send_meme message, 'http://thecodinglove.com/random', (text)->
       message.send text
   robot.respond /last joy/i, (message)->
+    send_meme message, 'http://thecodinglove.com', (text)->
+      message.send text
+  robot.respond /(spread some )?love/i, (message)->
+    send_meme message, 'http://thecodinglove.com/random', (text)->
+      message.send text
+  robot.respond /last love/i, (message)->
     send_meme message, 'http://thecodinglove.com', (text)->
       message.send text
 
