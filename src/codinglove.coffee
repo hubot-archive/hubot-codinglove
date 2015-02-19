@@ -57,7 +57,7 @@ send_meme = (message, location, response_handler)->
 
 get_meme_image = (body, selector)->
   $ = cheerio.load(body)
-  $(selector).first().attr('src')
+  $(selector).first().attr('src').replace(/\.jpe?g/i, '.gif')
 
 get_meme_txt = (body, selector)->
   $ = cheerio.load(body)
