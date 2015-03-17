@@ -26,10 +26,10 @@ he = require('he')
 
 module.exports = (robot)->
   robot.respond /(donne moi de la )?joie( bordel)?/i, (message)->
-    send_meme message, 'http://lesjoiesducode.fr/random', (text)->
+    send_new_meme message, 'http://lesjoiesducode.fr/random', (text)->
       message.send text
   robot.respond /derni[èe]re joie/i, (message)->
-    send_meme message, 'http://lesjoiesducode.fr', (text)->
+    send_new_meme message, 'http://lesjoiesducode.fr', (text)->
       message.send text
   robot.respond /((give me|spread) some )?(joy|love)( asshole)?/i, (message)->
     send_meme message, 'http://thecodinglove.com/random', (text)->
@@ -38,6 +38,19 @@ module.exports = (robot)->
     send_meme message, 'http://thecodinglove.com', (text)->
       message.send text
 
+send_new_meme = (message, location, response_handler)->
+  url = location
+
+  message.http(url).get() (error, response, body)->
+    return response_handler "Sorry, something went wrong" if error
+
+    if response.statusCode == 302 || response.statusCode == 301
+      location = response.headers['location']
+      return send_new_meme(message, location, response_handler)
+
+    img_src = get_meme_image(body, ".ljdc-posts .blog-post video img")
+
+    txt = get_meme_txt(body, ".ljdc-posts .blog-post h1.blog-post-title")
 
 send_meme = (message, location, response_handler)->
   url = location
