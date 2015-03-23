@@ -48,7 +48,7 @@ send_new_meme = (message, location, response_handler)->
       location = response.headers['location']
       return send_new_meme(message, location, response_handler)
 
-    img_src = get_meme_image(body, ".ljdc-posts .blog-post video img")
+    img_src = get_meme_image(body, ".ljdc-posts .blog-post .blog-post-content img")
 
     txt = get_meme_txt(body, ".ljdc-posts .blog-post h1.blog-post-title a")
 
