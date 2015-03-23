@@ -50,7 +50,7 @@ send_new_meme = (message, location, response_handler)->
 
     img_src = get_meme_image(body, ".ljdc-posts .blog-post video img")
 
-    txt = get_meme_txt(body, ".ljdc-posts .blog-post h1.blog-post-title")
+    txt = get_meme_txt(body, ".ljdc-posts .blog-post h1.blog-post-title a")
 
 send_meme = (message, location, response_handler)->
   url = location
