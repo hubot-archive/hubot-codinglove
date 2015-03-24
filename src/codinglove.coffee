@@ -52,6 +52,8 @@ send_new_meme = (message, location, response_handler)->
 
     txt = get_meme_txt(body, ".ljdc-posts .blog-post h1.blog-post-title a")
 
+    response_handler "#{txt} #{img_src}"
+
 send_meme = (message, location, response_handler)->
   url = location
 
