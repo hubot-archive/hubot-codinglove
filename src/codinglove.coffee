@@ -51,6 +51,10 @@ send_new_meme = (message, location, response_handler)->
     img_src = get_meme_image(body, ".ljdc-posts .blog-post .blog-post-content img")
 
     txt = get_meme_txt(body, ".ljdc-posts .blog-post h1.blog-post-title a")
+    if txt == ''
+      txt = get_meme_txt(body, ".ljdc-posts .blog-post h1.blog-post-title")
+
+    txt = txt.replace(/[\n\r]/g, '')
 
     response_handler "#{txt} #{img_src}"
 
