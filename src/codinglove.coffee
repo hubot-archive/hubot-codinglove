@@ -56,7 +56,8 @@ send_new_meme = (message, location, response_handler)->
 
     txt = txt.replace(/[\n\r]/g, '')
 
-    response_handler "#{txt} #{img_src}"
+    response_handler "#{txt}"
+    response_handler "#{img_src}"
 
 send_meme = (message, location, response_handler)->
   url = location
@@ -72,7 +73,8 @@ send_meme = (message, location, response_handler)->
 
     txt = get_meme_txt(body, ".post h3 a")
 
-    response_handler "#{txt} #{img_src}"
+    response_handler "#{txt}"
+    response_handler "#{img_src}"
 
 get_meme_image = (body, selector)->
   $ = cheerio.load(body)
