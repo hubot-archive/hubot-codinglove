@@ -71,7 +71,7 @@ send_meme = (message, location, response_handler)->
 
     img_src = get_meme_image(body, ".post img")
 
-    txt = get_meme_txt(body, ".post .centre h3")
+    txt = get_meme_txt(body, ".post h3")
 
     response_handler "#{txt}"
     response_handler "#{img_src}"
