@@ -26,19 +26,19 @@ he = require('he')
 
 module.exports = (robot)->
   robot.respond /(donne moi de la )?joie( bordel)?/i, (message)->
-    send_new_meme message, 'http://lesjoiesducode.fr/random', (text)->
+    send_new_random_meme message, 'http://lesjoiesducode.fr', (text)->
       message.send text
   robot.respond /derni[èe]re joie/i, (message)->
-    send_new_meme message, 'http://lesjoiesducode.fr', (text)->
+    send_meme message, 'http://lesjoiesducode.fr', (text)->
       message.send text
   robot.respond /((give me|spread) some )?(joy|love)( asshole)?/i, (message)->
-    send_meme message, 'http://thecodinglove.com/random', (text)->
+    send_random_meme message, 'http://thecodinglove.com', (text)->
       message.send text
   robot.respond /last (joy|love)/i, (message)->
     send_meme message, 'http://thecodinglove.com', (text)->
       message.send text
 
-send_new_meme = (message, location, response_handler)->
+send_new_random_meme = (message, location, response_handler)->
   url = location
 
   message.http(url).get() (error, response, body)->
@@ -46,18 +46,11 @@ send_new_meme = (message, location, response_handler)->
 
     if response.statusCode == 302 || response.statusCode == 301
       location = response.headers['location']
-      return send_new_meme(message, location, response_handler)
+      return send_new_random_meme(message, location, response_handler)
 
-    img_src = get_meme_image(body, ".ljdc-posts .blog-post .blog-post-content img")
+    random_path = get_random_link_fr(body, ".fa-random")
 
-    txt = get_meme_txt(body, ".ljdc-posts .blog-post h1.blog-post-title a")
-    if txt == ''
-      txt = get_meme_txt(body, ".ljdc-posts .blog-post h1.blog-post-title")
-
-    txt = txt.replace(/[\n\r]/g, '')
-
-    response_handler "#{txt}"
-    response_handler "#{img_src}"
+    send_meme(message, random_path, response_handler)
 
 send_meme = (message, location, response_handler)->
   url = location
@@ -69,12 +62,26 @@ send_meme = (message, location, response_handler)->
       location = response.headers['location']
       return send_meme(message, location, response_handler)
 
-    img_src = get_meme_image(body, ".post img")
+    img_src = get_meme_image(body, ".blog-post-content img")
 
-    txt = get_meme_txt(body, ".post h3")
+    txt = get_meme_txt(body, ".blog-post-title")
 
     response_handler "#{txt}"
     response_handler "#{img_src}"
+
+send_random_meme = (message, location, response_handler)->
+  url = location
+
+  message.http(url).get() (error, response, body)->
+    return response_handler "Sorry, something went wrong" if error
+
+    if response.statusCode == 302 || response.statusCode == 301
+      location = response.headers['location']
+      return send_random_meme(message, location, response_handler)
+
+    random_path = get_random_link(body, "a.nav-link")
+
+    send_meme(message, random_path, response_handler)
 
 get_meme_image = (body, selector)->
   $ = cheerio.load(body)
@@ -83,3 +90,11 @@ get_meme_image = (body, selector)->
 get_meme_txt = (body, selector)->
   $ = cheerio.load(body)
   he.decode $(selector).first().text()
+
+get_random_link = (body, selector)->
+  $ = cheerio.load(body)
+  $(selector).first().attr('href')
+
+get_random_link_fr = (body, selector)->
+  $ = cheerio.load(body)
+  $(selector).parent().attr('href')
