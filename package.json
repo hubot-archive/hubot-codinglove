@@ -1,7 +1,7 @@
 {
   "name": "hubot-thecodinglovegifs",
   "description": "A script for Hubot to display meme from thecodinglove and lesjoiesducode.",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "author": "Yves Brissaud <yves.brissaud@gmail.com>, Forked by Patrick Corbett <patrick.corbett57@gmail.com>",
   "license": "MIT",
   "keywords": [
@@ -16,9 +16,10 @@
     "url": "https://github.com/patrickcorbett/hubot-thecodinglovegifs/issues"
   },
   "dependencies": {
-    "coffee-script": "~1.6",
     "cheerio": "0.7.0",
-    "he": "~0.4.1"
+    "coffee-script": "~1.6",
+    "he": "~0.4.1",
+    "npm": "^6.1.0"
   },
   "devDependencies": {
     "mocha": "*",
